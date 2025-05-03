@@ -10,18 +10,18 @@ create table ProductDetails_1NF(
 -- Step 2: Insert the normalized data by splitting the comma-separated values
 -- For OrderID 101: John Doe with products Laptop and Mouse
 insert into ProductDetails_1NF (OrderID, CustomerName, ProductName) values
-(1, "John Doe", "Laptop"),
-(1, "John Doe", "Mouse");
+(101, "John Doe", "Laptop"),
+(101, "John Doe", "Mouse");
 
 -- For OrderID 102: Jane Smith with products Tablet, Keyboard, and Mouse
 insert into ProductDetails_1NF (OrderID, CustomerName, ProductName) values
-(2, "Jane Smith", "Tablet"),
-(2, "Jane Smith", "Keyboard"),
-(2, "Jane Smith", "Mouse");
+(102, "Jane Smith", "Tablet"),
+(102, "Jane Smith", "Keyboard"),
+(102, "Jane Smith", "Mouse");
 
 -- For OrderID 103: Emily Clark with product Phone
 insert into ProductDetails_1NF (OrderID, CustomerName, ProductName) values
-(3, "Emily Clark", "Phone");
+(103, "Emily Clark", "Phone");
 
 --Question 2: Normalize the following table to 2NF.
 
@@ -34,7 +34,7 @@ create table Orders_2NF(
 
 -- Step 2: Create the OrderItems table to store product details for each order
 -- This will handle the many-to-many relationship between orders and products
-create table OrderIteams (
+create table Product (
     OrderID int,
     ProductName varchar(255),
     Quantity INT,
@@ -49,7 +49,7 @@ insert into Orders_2NF (OrderID, CustomerName) values
 (103, "Emily Clark");
 
 -- Insert the product details into the OrderIteams table
-insert into OrderIteams (OrderID, ProductName) values
+insert into Product (OrderID, ProductName) values
 (101, 'Laptop', 2),
 (101, 'Mouse', 1),
 (102, 'Tablet', 3),
